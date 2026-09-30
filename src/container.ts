@@ -10,7 +10,7 @@ export interface Container {
 
 export const DEFAULT_CACHE_TTL_MS = 30000;
 
-function parseCacheTtl(value: string | undefined): number {
+export function parseCacheTtl(value: string | undefined): number {
   if (value === undefined || value.trim() === "") {
     return DEFAULT_CACHE_TTL_MS;
   }

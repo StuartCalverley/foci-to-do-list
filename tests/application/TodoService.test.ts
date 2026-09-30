@@ -161,6 +161,12 @@ describe('TodoService', () => {
       expect(service.complete(todo.id).isCompleted).toBe(true);
     });
 
+    it('is idempotent for incomplete as well', () => {
+      const todo = service.add({ title: 'x' });
+      expect(service.incomplete(todo.id).isCompleted).toBe(false);
+      expect(service.incomplete(todo.id).isCompleted).toBe(false);
+    });
+
     it('throws NotFoundError for a missing id', () => {
       expect(() => service.complete('nope')).toThrow(NotFoundError);
     });

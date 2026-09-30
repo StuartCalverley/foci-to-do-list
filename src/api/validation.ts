@@ -5,7 +5,7 @@ import type { ListOptions } from '../application/TodoService.js';
 
 const dateOnlyRegex = /^\d{4}-\d{2}-\d{2}$/;
 
-function isValidDateOnly(value: string): boolean {
+export function isValidDateOnly(value: string): boolean {
   if (!dateOnlyRegex.test(value)) {
     return false;
   }
