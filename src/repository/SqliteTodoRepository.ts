@@ -1,6 +1,6 @@
-import type Database from 'better-sqlite3';
-import type { TodoRepository } from './TodoRepository.js';
-import type { Todo } from '../model/todo.js';
+import type Database from "better-sqlite3";
+import type { TodoRepository } from "./TodoRepository.js";
+import type { Todo } from "../model/todo.js";
 
 interface TodoRow {
   id: string;
@@ -26,9 +26,10 @@ export class SqliteTodoRepository implements TodoRepository {
   constructor(private readonly db: Database.Database) {}
 
   findById(id: string): Todo | undefined {
+    console.log("AM I IN EHRE");
     const row = this.db
       .prepare(
-        'SELECT id, title, description, due_date, is_completed, created_at FROM todos WHERE id = ?',
+        "SELECT id, title, description, due_date, is_completed, created_at FROM todos WHERE id = ?",
       )
       .get(id) as TodoRow | undefined;
     return row === undefined ? undefined : toTodo(row);
@@ -37,7 +38,7 @@ export class SqliteTodoRepository implements TodoRepository {
   findAll(): Todo[] {
     const rows = this.db
       .prepare(
-        'SELECT id, title, description, due_date, is_completed, created_at FROM todos',
+        "SELECT id, title, description, due_date, is_completed, created_at FROM todos",
       )
       .all() as TodoRow[];
     return rows.map(toTodo);
@@ -45,10 +46,12 @@ export class SqliteTodoRepository implements TodoRepository {
 
   insert(todo: Todo): void {
     this.db
-      .prepare(`
+      .prepare(
+        `
         INSERT INTO todos (id, title, description, due_date, is_completed, created_at)
         VALUES (@id, @title, @description, @dueDate, @isCompleted, @createdAt)
-      `)
+      `,
+      )
       .run({
         id: todo.id,
         title: todo.title,
@@ -61,12 +64,14 @@ export class SqliteTodoRepository implements TodoRepository {
 
   update(todo: Todo): void {
     this.db
-      .prepare(`
+      .prepare(
+        `
         UPDATE todos
         SET title = @title, description = @description,
             due_date = @dueDate, is_completed = @isCompleted
         WHERE id = @id
-      `)
+      `,
+      )
       .run({
         id: todo.id,
         title: todo.title,
@@ -77,6 +82,6 @@ export class SqliteTodoRepository implements TodoRepository {
   }
 
   delete(id: string): void {
-    this.db.prepare('DELETE FROM todos WHERE id = ?').run(id);
+    this.db.prepare("DELETE FROM todos WHERE id = ?").run(id);
   }
 }
