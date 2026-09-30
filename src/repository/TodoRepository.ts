@@ -1,4 +1,4 @@
-import type { Todo } from './todo.js';
+import type { Todo } from '../model/todo.js';
 
 export interface TodoRepository {
   findById(id: string): Todo | undefined;

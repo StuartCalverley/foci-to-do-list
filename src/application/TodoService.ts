@@ -1,11 +1,11 @@
 import type { Clock } from '../domain/Clock.js';
-import type { TodoRepository } from '../domain/TodoRepository.js';
+import type { TodoRepository } from '../repository/TodoRepository.js';
 import {
   createTodo,
   normalizeTitle,
   type CreateTodoInput,
   type Todo,
-} from '../domain/todo.js';
+} from '../model/todo.js';
 import { NotFoundError } from '../domain/errors.js';
 
 export type TodoStatus = 'active' | 'completed' | 'overdue' | 'all';

@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import type { TodoRepository } from '../../src/domain/TodoRepository.js';
+import type { TodoRepository } from '../../src/repository/TodoRepository.js';
 import type { Clock } from '../../src/domain/Clock.js';
-import type { Todo } from '../../src/domain/todo.js';
+import type { Todo } from '../../src/model/todo.js';
 import { TodoService } from '../../src/application/TodoService.js';
 import { NotFoundError } from '../../src/domain/errors.js';
 
