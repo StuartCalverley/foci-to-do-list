@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo API</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Todo API</h1>
+
+      <section class="card">
+        <h2>Add todo</h2>
+        <form id="add-form">
+          <label>
+            Title <span class="required">*</span>
+            <input type="text" name="title" id="add-title" required maxlength="200" />
+          </label>
+          <label>
+            Description
+            <input type="text" name="description" id="add-description" maxlength="2000" />
+          </label>
+          <label>
+            Due date (YYYY-MM-DD)
+            <input type="text" name="dueDate" id="add-due-date" placeholder="2026-12-31" />
+          </label>
+          <button type="submit">Add</button>
+          <p id="add-error" class="error" hidden></p>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>View by ID</h2>
+        <form id="view-form">
+          <input type="text" id="view-id" placeholder="UUID" required />
+          <button type="submit">Find</button>
+        </form>
+        <div id="view-result"></div>
+      </section>
+
+      <section class="card">
+        <div class="toolbar">
+          <h2>Todos</h2>
+          <label>
+            Status
+            <select id="filter-status">
+              <option value="all">All</option>
+              <option value="active">Active</option>
+              <option value="completed">Completed</option>
+              <option value="overdue">Overdue</option>
+            </select>
+          </label>
+          <label>
+            Sort
+            <select id="sort-by">
+              <option value="createdAt">Created</option>
+              <option value="dueDate">Due date</option>
+              <option value="title">Title</option>
+            </select>
+          </label>
+          <label>
+            Direction
+            <select id="sort-direction">
+              <option value="asc">Asc</option>
+              <option value="desc">Desc</option>
+            </select>
+          </label>
+          <button id="refresh" type="button">Refresh</button>
+        </div>
+        <p id="list-error" class="error" hidden></p>
+        <ul id="todo-list" class="todo-list"></ul>
+        <p id="empty" hidden>No todos match.</p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

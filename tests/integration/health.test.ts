@@ -14,3 +14,22 @@ describe('GET /health', () => {
     expect(response.body).toEqual({ status: 'ok' });
   });
 });
+
+describe('static client', () => {
+  it('serves the index page at /', async () => {
+    const app = createApp(buildContainer(openDatabase(':memory:')));
+    const response = await request(app).get('/');
+
+    expect(response.status).toBe(200);
+    expect(response.type).toBe('text/html');
+    expect(response.text).toContain('Todo API');
+  });
+
+  it('serves the client bundle', async () => {
+    const app = createApp(buildContainer(openDatabase(':memory:')));
+    const response = await request(app).get('/app.js');
+
+    expect(response.status).toBe(200);
+    expect(response.type).toContain('javascript');
+  });
+});
