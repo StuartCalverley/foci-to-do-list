@@ -1,5 +1,5 @@
-import { randomUUID } from 'node:crypto';
-import { ValidationError } from './errors.js';
+import { randomUUID } from "node:crypto";
+import { ValidationError } from "./errors.js";
 
 export interface Todo {
   id: string;
@@ -18,16 +18,23 @@ export interface CreateTodoInput {
   dueDate?: string;
 }
 
-export function createTodo(input: CreateTodoInput, now: Date): Todo {
-  const title = input.title.trim();
-  if (title.length === 0) {
-    throw new ValidationError('title must be a non-empty string');
+export function normalizeTitle(title: string): string {
+  const trimmed = title.trim();
+  if (trimmed.length <= 0) {
+    throw new ValidationError("title must be a non-empty string");
   }
+  return trimmed;
+}
+
+export function createTodo(input: CreateTodoInput, now: Date): Todo {
+  const title = normalizeTitle(input.title);
 
   return {
     id: randomUUID(),
     title,
-    ...(input.description !== undefined ? { description: input.description } : {}),
+    ...(input.description !== undefined
+      ? { description: input.description }
+      : {}),
     ...(input.dueDate !== undefined ? { dueDate: input.dueDate } : {}),
     isCompleted: false,
     createdAt: now.toISOString(),
