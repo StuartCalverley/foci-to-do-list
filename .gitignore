@@ -13,3 +13,6 @@ coverage/
 *.log
 .idea/
 .vscode/
+
+# Local environment (secrets) — commit .env.example, not .env
+.env

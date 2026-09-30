@@ -1,8 +1,9 @@
-import process from 'node:process';
+import "dotenv/config";
+import process from "node:process";
 
-import { createApp } from './app.js';
-import { buildContainer } from './container.js';
-import { openDatabase, resolveDbPath } from './infrastructure/db.js';
+import { createApp } from "./app.js";
+import { buildContainer } from "./container.js";
+import { openDatabase, resolveDbPath } from "./infrastructure/db.js";
 
 const port = Number(process.env.PORT ?? 3000);
 const db = openDatabase(resolveDbPath());

@@ -26,7 +26,6 @@ export class SqliteTodoRepository implements TodoRepository {
   constructor(private readonly db: Database.Database) {}
 
   findById(id: string): Todo | undefined {
-    console.log("AM I IN EHRE");
     const row = this.db
       .prepare(
         "SELECT id, title, description, due_date, is_completed, created_at FROM todos WHERE id = ?",
