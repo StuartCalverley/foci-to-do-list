@@ -1,49 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import type { TodoRepository } from '../../src/repository/TodoRepository.js';
-import type { Clock } from '../../src/domain/Clock.js';
-import type { Todo } from '../../src/model/todo.js';
 import { TodoService } from '../../src/application/TodoService.js';
 import { NotFoundError } from '../../src/domain/errors.js';
-
-class InMemoryTodoRepository implements TodoRepository {
-  private items = new Map<string, Todo>();
-
-  findById(id: string): Todo | undefined {
-    return this.items.get(id);
-  }
-
-  findAll(): Todo[] {
-    return [...this.items.values()];
-  }
-
-  insert(todo: Todo): void {
-    this.items.set(todo.id, todo);
-  }
-
-  update(todo: Todo): void {
-    this.items.set(todo.id, todo);
-  }
-
-  delete(id: string): void {
-    this.items.delete(id);
-  }
-}
-
-class FakeClock implements Clock {
-  private value: Date;
-
-  constructor(value: Date) {
-    this.value = value;
-  }
-
-  set(value: Date): void {
-    this.value = value;
-  }
-
-  now(): Date {
-    return this.value;
-  }
-}
+import { InMemoryTodoRepository } from '../support/InMemoryTodoRepository.js';
+import { FakeClock } from '../support/FakeClock.js';
 
 const TODAY = '2026-05-10T00:00:00.000Z';
 
