@@ -1,4 +1,4 @@
-import type { Clock } from '../../src/domain/Clock.js';
+import type { Clock } from '../../src/infrastructure/Clock.js';
 
 export class FakeClock implements Clock {
   private value: Date;

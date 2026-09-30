@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { ValidationError } from "../domain/errors.js";
+import { ValidationError } from "../application/errors.js";
 
 export interface Todo {
   id: string;

@@ -3,7 +3,7 @@ import {
   DomainError,
   NotFoundError,
   ValidationError,
-} from '../domain/errors.js';
+} from '../application/errors.js';
 import { problemDetails } from './problemDetails.js';
 
 export function errorMiddleware(

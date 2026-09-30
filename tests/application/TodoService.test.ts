@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { TodoService } from '../../src/application/TodoService.js';
-import { NotFoundError } from '../../src/domain/errors.js';
+import { NotFoundError } from '../../src/application/errors.js';
 import { InMemoryTodoRepository } from '../support/InMemoryTodoRepository.js';
 import { FakeClock } from '../support/FakeClock.js';
 

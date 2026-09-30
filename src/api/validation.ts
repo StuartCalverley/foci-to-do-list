@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ValidationError } from '../domain/errors.js';
+import { ValidationError } from '../application/errors.js';
 import type { CreateTodoInput } from '../model/todo.js';
 import type { ListOptions } from '../application/TodoService.js';
 

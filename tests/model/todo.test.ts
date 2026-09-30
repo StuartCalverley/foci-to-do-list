@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { createTodo } from '../../src/model/todo.js';
-import { ValidationError } from '../../src/domain/errors.js';
+import { ValidationError } from '../../src/application/errors.js';
 
 const now = new Date('2026-01-01T00:00:00.000Z');
 

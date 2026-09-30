@@ -6,7 +6,7 @@ import {
   DomainError,
   NotFoundError,
   ValidationError,
-} from '../../src/domain/errors.js';
+} from '../../src/application/errors.js';
 
 class GenericDomainError extends DomainError {
   readonly code = 'VALIDATION' as const;

@@ -1,4 +1,4 @@
-import type { ValidationIssue } from '../domain/errors.js';
+import type { ValidationIssue } from '../application/errors.js';
 
 export interface ProblemDetails {
   type: string;

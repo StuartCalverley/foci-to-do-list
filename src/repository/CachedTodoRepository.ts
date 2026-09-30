@@ -1,4 +1,4 @@
-import type { Clock } from '../domain/Clock.js';
+import type { Clock } from '../infrastructure/Clock.js';
 import type { Todo } from '../model/todo.js';
 import type { TodoRepository } from './TodoRepository.js';
 
